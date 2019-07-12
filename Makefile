@@ -28,7 +28,14 @@ COM =\
 	components/volume\
 	components/wifi
 
-all: slstatus
+all: options slstatus
+
+options:
+	@echo slstatus build options:
+	@echo "CFLAGS   = ${CFLAGS}"
+	@echo "LDFLAGS  = ${LDFLAGS}"
+	@echo "CC       = ${CC}"
+	@echo "PREFIX   = ${PREFIX}"
 
 $(COM:=.o): config.mk $(REQ:=.h)
 slstatus.o: slstatus.c slstatus.h arg.h config.h config.mk $(REQ:=.h)
