@@ -60,6 +60,9 @@ main(int argc, char *argv[])
 		case 's':
 			sflag = 1;
 			break;
+		case 'v':
+			die("%s " VERSION, argv0);
+			break;
 		default:
 			usage();
 	} ARGEND

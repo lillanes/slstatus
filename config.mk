@@ -1,5 +1,5 @@
 # slstatus version
-VERSION = 0
+VERSION = 0.0.0.lillanes
 
 # customize below to fit your system
 
@@ -11,7 +11,7 @@ X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib
 
 # flags
-CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE
+CPPFLAGS = -I$(X11INC) -DVERSION=\"$(VERSION)\" -D_DEFAULT_SOURCE
 CFLAGS   = -std=c99 -pedantic -Wall -Wextra -Os
 LDFLAGS  = -L$(X11LIB) -s
 LDLIBS   = -lX11
