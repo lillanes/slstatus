@@ -66,5 +66,6 @@ static const struct arg args[] = {
   { ram_perc, "ram:%s%% ", NULL },
   { wifi_essid, "%s:", "wlp61s0" },
   { wifi_perc, "%s%% ", "wlp61s0" },
+  { run_command, "vol:%s ", "amixer sget Master | awk -F'[][]' '/%/ { print $2 }'" },
   { datetime, "%s",           "%F %T" },
 };
