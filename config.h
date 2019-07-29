@@ -3,9 +3,6 @@
 /* interval between updates (in ms) */
 const unsigned int interval = 1000;
 
-/* text to show if no value can be retrieved */
-static const char unknown_str[] = "n/a";
-
 /* maximum output string length */
 #define MAXLEN 2048
 
@@ -13,11 +10,11 @@ static const char unknown_str[] = "n/a";
  * function            description                     argument (example)
  *
  * battery_perc        battery percentage              battery name (BAT0)
- *                                                     NULL on OpenBSD
+ *                                                     NULL on OpenBSD/FreeBSD
  * battery_state       battery charging state          battery name (BAT0)
- *                                                     NULL on OpenBSD
+ *                                                     NULL on OpenBSD/FreeBSD
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
- *                                                     NULL on OpenBSD
+ *                                                     NULL on OpenBSD/FreeBSD
  * cpu_perc            cpu usage in percent            NULL
  * cpu_freq            cpu frequency in MHz            NULL
  * datetime            date and time                   format string (%F %T)
@@ -52,6 +49,8 @@ static const char unknown_str[] = "n/a";
  * temp                temperature in degree celsius   sensor file
  *                                                     (/sys/class/thermal/...)
  *                                                     NULL on OpenBSD
+ *                                                     thermal zone on FreeBSD
+ *                                                     (tz0, tz1, etc.)
  * uid                 UID of current user             NULL
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
@@ -60,6 +59,13 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function format          argument */
-	{ datetime, "%s",           "%F %T" },
+  /* function format          argument */
+  { battery_state, "bat:%s", "BAT0"},
+  { battery_perc, "%s%% ", "BAT0"},
+  { cpu_perc, "cpu:%s%% ", NULL },
+  { ram_perc, "ram:%s%% ", NULL },
+  { wifi_essid, "%s:", "wlp61s0" },
+  { wifi_perc, "%s%% ", "wlp61s0" },
+  { run_command, "vol:%s ", "pactl list sinks | awk -F ' */ *' '/Mute: yes/ { print \"mut\"; exit } /%/ { print $2; exit }'" },
+  { datetime, "%s",           "%F %T" },
 };
