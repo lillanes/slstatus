@@ -64,8 +64,9 @@ static const struct arg args[] = {
   { battery_perc, "%s%% ", "BAT0"},
   { cpu_perc, "cpu:%s%% ", NULL },
   { ram_perc, "ram:%s%% ", NULL },
-  { wifi_essid, "%s:", "wlp61s0" },
-  { wifi_perc, "%s%% ", "wlp61s0" },
+  { wifi_essid, "%s", "wlp61s0" },
+  { run_command, "+tun", "ip -brief link show tun0" },
+  { wifi_perc, ":%s%% ", "wlp61s0" },
   { run_command, "vol:%s ", "pactl list sinks | awk -F ' */ *' '/Mute: yes/ { print \"mut\"; exit } /%/ { print $2; exit }'" },
   { datetime, "%s",           "%F %T" },
 };
