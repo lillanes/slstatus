@@ -61,7 +61,7 @@ const unsigned int interval = 1000;
 static const struct arg args[] = {
   /* function format          argument */
   { battery_state, "bat:%s", "BAT0"},
-  { battery_perc, "%s%% ", "BAT0"},
+  { battery_perc, "%s%% ", "BAT0"},
   { cpu_perc, "cpu:%s%% ", NULL },
   { ram_perc, "ram:%s%% ", NULL },
   { wifi_essid, "%s", "wlp61s0" },
