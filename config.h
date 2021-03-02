@@ -68,6 +68,6 @@ static const struct arg args[] = {
   { wifi_perc, ":%s%% ", "wlp61s0" },
   { ipv4, "eth ", "enp0s31f6" },
   { run_command, "tun:%s ", "ip -brief link | grep -oP 'mullvad-\\K\\S+'" },
-  { run_command, "vol:%s ", "pactl list sinks | awk -F ' */ *' '/Mute: yes/ { print \"mut\"; exit } /%/ { print $2; exit }'" },
+  { run_command, "vol:%s ", "pacmd list-sinks | grep -A 16 '* index' | tac | awk '/muted: yes/ { print \"mut\"; exit } /volume: front/ { print $5; exit }'" },
   { datetime, "%s",           "%F %T" },
 };
