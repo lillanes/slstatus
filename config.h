@@ -60,14 +60,12 @@ const unsigned int interval = 1000;
  */
 static const struct arg args[] = {
   /* function format          argument */
-  { battery_state, "bat:%s", "BAT0"},
-  { battery_perc, "%s%% ", "BAT0"},
   { cpu_perc, "cpu:%s%% ", NULL },
   { ram_perc, "ram:%s%% ", NULL },
   { wifi_essid, "%s", "wlp5s0" },
   { wifi_perc, ":%s%% ", "wlp5s0" },
   { ipv4, "eth ", "enp0s31f6" },
   { run_command, "tun:%s ", "ip -brief link | grep -oP 'mullvad-\\K\\S+'" },
-  { run_command, "%s ", "pacmd list-sinks | grep -A 16 '* index' | awk '/name: .*pci/ { sink = \"pci\" } /name: .*usb/ { sink = \"usb\" } /volume: front/ { volume = $5 } /muted: yes/ { volume = \"mut\" } END { print \"vol(\" sink \"):\" volume }'" },
+  { run_command, "%s ", "pacmd list-sinks | grep -A 16 '* index' | awk '/name: .*hdmi/ { sink = \"hdmi\" } /name: .*iec958/ { sink = \"s/pdif\" } /volume: front/ { volume = $5 } /muted: yes/ { volume = \"mut\" } END { print \"vol(\" sink \"):\" volume }'" },
   { datetime, "%s",           "%F %T" },
 };
