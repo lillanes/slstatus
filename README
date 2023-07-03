@@ -1,12 +1,15 @@
 slstatus - suckless status
 ==========================
-slstatus is a suckless status monitor for window managers that use WM_NAME
-(e.g. dwm) or stdin to fill the status bar.
+slstatus is a small tool for providing system status information to other
+programs over the EWMH property of the root window (used by dwm(1)) or
+standard input/output. It is designed to be as efficient as possible by
+only issuing the minimum of system calls required.
 
 
 Features
 --------
 - Battery percentage/state/time left
+- Cat (read file)
 - CPU usage
 - CPU frequency
 - Custom shell commands
@@ -35,6 +38,10 @@ Requirements
 Currently slstatus works on FreeBSD, Linux and OpenBSD.
 In order to build slstatus you need the Xlib header files.
 
+- For volume percentage on Linux the kernel module `snd-mixer-oss` must be
+  loaded.
+- For volume percentage on FreeBSD, `sndio` must be installed.
+
 
 Installation
 ------------
@@ -60,6 +67,5 @@ source code. This keeps it fast, secure and simple.
 
 Upcoming
 --------
-
-A release (v1.0) will come soon... ;)
-After a long phase of inactivity, development has been continued!
+A first feature-complete release with official packages for common distributions
+will come soon.
