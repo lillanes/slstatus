@@ -66,8 +66,8 @@ static const struct arg args[] = {
   { cpu_perc, "cpu:%s%% ", NULL },
   { ram_perc, "ram:%s%% ", NULL },
   { wifi_essid, "%s", "wlp8s0" },
+  { run_command, "%s", "ip -brief link | grep -q 'proton0\\s\\+UP' && echo '(vpn)'" },
   { wifi_perc, ":%s%% ", "wlp8s0" },
-  { run_command, "tun:%s ", "ip -brief link | grep -oP 'mullvad-\\K\\S+'" },
   { run_command, "%s ", "pacmd list-sinks | grep -A 16 '* index' | awk '/name: .*hdmi/ { sink = \"hdmi\" } /name: .*iec958/ { sink = \"s/pdif\" } /volume: front/ { volume = $5 } /muted: yes/ { volume = \"mut\" } END { print \"vol(\" sink \"):\" volume }'" },
   { datetime, "%s",           "%F %T" },
 };
